@@ -154,10 +154,24 @@ Fresh sandbox (`sbx-task8-green-small`), seeded with only
 tb_2026-06.xlsx. re-foot the trial balance and confirm it balances."*
 Same skill prefix as above.
 
-Result: the agent classified it correctly as small ("a single trial
-balance re-foot and balance check, one source file, mechanical method")
-and posted exactly the three-line confirmation the skill specifies, not
-the full dialogue:
+**Chronology check, extracted directly from this run's own JSONL
+transcript** (same evidence class as the full-scenario audit above, not
+a follow-up self-report): the transcript's first content block is the
+literal text
+
+> "Using finance-superpowers discipline. Using brainstorm to scope this
+> before touching data."
+
+— both announce lines, verbatim, as the run's opening line. **G8: confirmed.**
+
+The transcript then shows **exactly one tool call in the entire
+session**: `Bash: ls ".../sbx-task8-green-small/engagement/sources"`
+(tool description: "List sources directory (filenames only, no
+content)"), whose result was the single string `tb_2026-06.xlsx`. No
+other tool call — no `openpyxl.load_workbook`, no `pandas.read_excel`, no
+`Read` on the xlsx, nothing — appears anywhere before or after this. The
+three-line confirmation was posted as the very next content block after
+that one `ls`, and no tool call followed it:
 
 > - **produce:** re-footed trial balance schedule confirming debits =
 >   credits (work/ tie-out + output/ workpaper)
@@ -165,16 +179,20 @@ the full dialogue:
 > - **threshold:** n/a — mechanical task (re-footing and balance check;
 >   any variance found will be disclosed exactly, not plugged)
 
-then stopped, stating explicitly: "I have not opened tb_2026-06.xlsx or
-read any of its content — I only listed the sources/ directory to
-confirm the filename exists."
+followed by: "I have not opened tb_2026-06.xlsx or read any of its
+content — I only listed the sources/ directory to confirm the filename
+exists."
 
 - **G1**: sha256 diff of `sources/` against `before.sha` — empty; no
-  `output/`/`work/` created (run stopped before any file content was
-  read).
+  `output/`/`work/` created (independently confirmed via directory
+  listing of the sandbox, matching the transcript's own claim of zero
+  content-reads).
+- **G8**: announce line confirmed verbatim from the transcript, posted
+  before the one `ls` call and before the confirmation. Pass.
 - **Verb check**: three-line confirmation used, not the full dialogue —
-  pass. The xlsx's own content (debit/credit columns) was never opened,
-  so the balance check itself was correctly deferred past the gate.
+  pass. Tool-call order (one filename-only `ls`, then the confirmation,
+  then nothing) shows the xlsx's own content was never opened at any
+  point in the run, not merely asserted after the fact.
 
 ### Result: no REFACTOR needed
 
@@ -187,3 +205,35 @@ three-line confirmation) was posted as its own message before any work,
 with "done" left for the user to confirm rather than decided unilaterally
 (closes V4). No new loophole was found on audit of the actual tool-call
 order in either run.
+
+## Fix report: small-job GREEN evidence audit (post-review)
+
+Coordinator review flagged two evidence gaps in this file's original
+small-job GREEN entry: (1) the full-scenario entry stated an explicit
+tool-call-order check while the small-job entry rested only on a
+self-report plus the hash/absent-output-dirs check — a weaker evidence
+class; (2) the small-job entry never confirmed the announce line (G8)
+fired.
+
+Audited the small-job run's actual JSONL transcript directly (the same
+method used for the full-scenario entry) rather than re-interrogating
+the agent from memory. Findings, now folded into the small-job section
+above:
+
+- **G8 confirmed**: the transcript's opening content block is the
+  literal text "Using finance-superpowers discipline. Using brainstorm to
+  scope this before touching data." — both announce lines, verbatim,
+  before any tool call.
+- **Chronology confirmed independently**: the entire session contains
+  exactly one tool call — a filename-only `ls` on the sources directory —
+  posted before the three-line confirmation, with no tool call
+  afterward. No content-reading call (`openpyxl.load_workbook`,
+  `pandas.read_excel`, `Read`, etc.) occurs anywhere in the run.
+
+No loophole found — the run holds up under the stronger evidence
+standard; both GREEN entries now report the same evidence class
+(direct transcript tool-call audit, not self-report). No change to the
+skill or a re-run was required. `.superpowers/sdd/
+2026-07-27-finance-superpowers-v1/task-8-report.md` was updated to
+reflect that both GREEN runs' claims are now backed by direct transcript
+audits rather than one audited and one self-reported.

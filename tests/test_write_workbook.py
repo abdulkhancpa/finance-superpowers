@@ -1,4 +1,6 @@
 import csv
+import json
+import subprocess
 from pathlib import Path
 
 from openpyxl import load_workbook
@@ -55,3 +57,37 @@ def test_empty_assumptions_says_none(tmp_path):
     cover = load_workbook(out)["cover"]
     texts = [c.value for row in cover.iter_rows() for c in row if c.value]
     assert "None." in texts
+
+
+def test_cli_manifest(tmp_path):
+    csv_path = make_csv(tmp_path)
+    out_path = tmp_path / "cli_output.xlsx"
+    manifest = {
+        "output": str(out_path),
+        "cover": {
+            "title": "CLI test",
+            "engagement": "manifest test",
+            "date": "2026-07-27",
+        },
+        "sheets": [
+            {
+                "name": "schedule",
+                "csv": str(csv_path),
+                "money_cols": ["amount"],
+                "total_rows": [2],
+            }
+        ],
+    }
+    manifest_path = tmp_path / "manifest.json"
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+    result = subprocess.run(
+        ["python", "scripts/write_workbook.py", str(manifest_path)],
+        cwd=".",
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 0, f"CLI failed: {result.stderr}"
+    wb = load_workbook(out_path)
+    assert wb.sheetnames == ["cover", "schedule"]
+    assert wb["cover"]["A1"].value == "CLI test"
+    assert wb["schedule"]["A1"].value == "account"

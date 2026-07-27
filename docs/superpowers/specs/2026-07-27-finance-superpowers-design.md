@@ -125,7 +125,7 @@ finance-superpowers/
     write_workbook.py            # shared xlsx writer — the formatting bar
     profile_table.py             # tidy-table profiler
   sample-data/
-    <company>/
+    brightwater/
       trial-balance/
       subledger-tie/
       data-room/
@@ -135,7 +135,7 @@ finance-superpowers/
 
 ## 8. Sample data
 
-Three scenarios built around **one fictional company** — a small multi-entity distributor being acquired, which naturally motivates all three — with a consistent story so the scenarios chain into an end-to-end mini-engagement:
+Three scenarios built around **one fictional company** — Brightwater Distribution Co., a small multi-entity distributor being acquired, which naturally motivates all three — with a consistent story so the scenarios chain into an end-to-end mini-engagement:
 
 1. **Ragged trial balance export** — merged headers, subtotal rows, format junk. Exercises understand / clean / transform.
 2. **Subledger that doesn't tie to the GL** — planted differences: a duplicate batch, a timing item, a true error. Exercises reconcile / analyze.

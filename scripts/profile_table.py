@@ -1,4 +1,9 @@
-"""Tidy-table profiler: structure, control totals, and mess signals for a CSV."""
+"""Tidy-table profiler: structure, control totals, and mess signals for a CSV.
+
+Note: type inference is purely lexical — a column of all-digit identifiers
+(account codes, invoice numbers) profiles as numeric and receives a sum.
+Consumers must judge whether a numeric column's sum is a meaningful control total.
+"""
 import csv
 import json
 import sys

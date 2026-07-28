@@ -1,6 +1,6 @@
 ---
 name: skillify
-description: use when a workflow just worked and will recur — end of a successful session, "we'll do this every month", or a process worth teaching to future sessions — to mint it as a named, tested skill.
+description: use when a workflow just worked and will recur — end of a successful session, "we'll do this every month", or a process worth teaching to future sessions.
 ---
 
 # skillify
@@ -19,15 +19,17 @@ document that merely asserts the order was correct.
 </HARD-GATE>
 
 1. extract the method, not the instance: generalize file names to roles
-   ("the subledger export", not "ar_subledger_2026-06.csv") and this
-   period's amounts to checks ("the statement must foot", not "must equal
-   144,500"). anything period-specific that survives — an amount, a date,
+   ("the subledger export", not "acme_export_q3.csv") and this period's
+   amounts to checks ("the statement must foot", not "must equal
+   42,000"). anything period-specific that survives — an amount, a date,
    an entity name, an invoice/batch/JE number — is a bug; grep the draft
    for the session's actual figures and names before calling it done.
 2. frontmatter is name + description only. the description states when
    to use the skill — triggering situations — never what it does or how
    (a process summary becomes a shortcut the agent takes instead of
-   reading the body).
+   reading the body). never force-load another file into the body with
+   `@path/to/file` syntax — the body is self-contained text a reader acts
+   on directly, not a pointer for the harness to dereference.
 3. exactly one hard gate. find the single non-negotiable rule this verb
    exists to enforce and mark it, once, as `<HARD-GATE>` — not folded into
    ordinary numbered steps as advisory prose that reads no differently
@@ -47,7 +49,14 @@ document that merely asserts the order was correct.
    before investigation, whatever the verb's gate requires — really
    happened in that order. a document that says "stated first" is not
    proof it was first.
-6. name it lowercase-kebab, verb-first, specific enough to trigger.
+6. every recorded failure is closed twice, not once: by a rule in the
+   numbered steps above (the actual fix) and by a row in the
+   rationalization table below quoting that failure's own transcript
+   verbatim — never invent a figure, never cite a later round's quote as
+   evidence of an earlier round's failure. a failure named only in the
+   table, with no step above closing it, is not closed; a table row with
+   no verbatim quote behind it is not grounded.
+7. name it lowercase-kebab, verb-first, specific enough to trigger.
 
 ## rationalizations
 

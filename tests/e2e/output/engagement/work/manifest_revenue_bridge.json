@@ -1,5 +1,5 @@
 {
-  "output": "C:/Users/ABDULK~1/AppData/Local/Temp/claude/C--Users-AbdulKhan-projects-finance-superpowers/89d45c9e-4a97-4a77-a89d-72902f922277/scratchpad/sbx-task17-v2/engagement/output/revenue_bridge_fy2025.xlsx",
+  "output": "output/revenue_bridge_fy2025.xlsx",
   "cover": {
     "title": "Brightwater Distribution Co. -- FY2025 Revenue Bridge (FY2024 to FY2025)",
     "engagement": "Initial financial diligence -- revenue movement analysis",
@@ -23,13 +23,13 @@
   "sheets": [
     {
       "name": "gross_tie",
-      "csv": "C:/Users/ABDULK~1/AppData/Local/Temp/claude/C--Users-AbdulKhan-projects-finance-superpowers/89d45c9e-4a97-4a77-a89d-72902f922277/scratchpad/sbx-task17-v2/engagement/work/revenue_gross_tie.csv",
+      "csv": "work/revenue_gross_tie.csv",
       "money_cols": ["amount"],
       "total_rows": [7, 9]
     },
     {
       "name": "revenue_bridge",
-      "csv": "C:/Users/ABDULK~1/AppData/Local/Temp/claude/C--Users-AbdulKhan-projects-finance-superpowers/89d45c9e-4a97-4a77-a89d-72902f922277/scratchpad/sbx-task17-v2/engagement/work/revenue_bridge_fy2025.csv",
+      "csv": "work/revenue_bridge_fy2025.csv",
       "money_cols": ["amount"],
       "total_rows": [0, 4]
     }

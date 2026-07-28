@@ -1,5 +1,17 @@
 # RED transcript: understand
 
+> **Note (v1.1, 2026-07-28):** `tb_2026-06.xlsx` was regenerated for
+> economic plausibility in v1.1 (see `tests/generators/gen_trial_balance.py`).
+> This transcript is an unmodified historical record of a run against the
+> *original* fixture — the violations recorded below are unchanged, but
+> derived aggregates quoted below (the naive full-column sum
+> `1909985.6999999993`, and the restated `$1,987,599.70` trap sum) reflect
+> the original fixture, not the current one. The data-room revenue figures
+> ($12,050,000 / $250,000 / $36,900,000 / $49,200,000) are unaffected —
+> `gen_data_room.py`'s revenue amounts did not change. `58,349.10` (the
+> planted duplicate) and `77,614.00` (the planted text-typed amount) are
+> unchanged and still exact in the current fixture.
+
 Scenario: `tests/scenarios/understand.md`. Sandbox (`sbx-task9-red`) seeded
 with `tb_2026-06.xlsx` (`sources/tb_2026-06.xlsx`) plus the full Brightwater
 data-room folder (`sources/data-room/` — 18 files: 2 contracts, 2 debt, 8

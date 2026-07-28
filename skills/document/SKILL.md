@@ -9,7 +9,8 @@ Announce at start: "Using document to write <deliverable> for <audience>."
 
 <HARD-GATE>
 the plan — what memo, for what audience, from which sources — is posted, in
-writing, as its own message, before any source file is opened or read; a plan
+writing, as its own message, before any source file is opened to read its
+values (the discipline layer's hard gate governs the trigger point); a plan
 narrated into the final report only after the deliverable already exists is
 not a plan, however it's introduced. every factual sentence names the source
 file it came from — a sentence with no possible citation is opinion, and must

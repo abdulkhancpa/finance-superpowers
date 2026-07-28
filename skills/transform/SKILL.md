@@ -35,9 +35,10 @@ sheet.
    eliminations, intentional exclusions — each with amount and reason.
 4. deliverables are built with
    `${CLAUDE_PLUGIN_ROOT}/scripts/write_workbook.py` — csv intermediates in
-   work/, formatted xlsx in output/, workpaper narrating input → rules →
-   output, with every figure citing the specific source row or range that
-   built it, never one blanket mention for a whole sheet.
+   work/, formatted xlsx in output/, transform's own section appended to the
+   engagement's one workpaper narrating input → rules → output, with every
+   figure citing the specific source row or range that built it, never one
+   blanket mention for a whole sheet.
 
 ## rationalizations
 

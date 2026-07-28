@@ -34,7 +34,9 @@ hedge stapled on afterward.
    show it as one equation: raw control total − removed subtotal rows −
    removed duplicates = tidy total. the tidy total equals exactly 0.00, or
    the residual is itemized as an open item with its exact size.
-6. output: tidy csv in work/, cleaning log in output/workpaper.md.
+6. output: tidy csv in work/, cleaning log as clean's own section appended
+   to the engagement's one `output/workpaper.md` — never a replacement for
+   another verb's section.
 
 ## rationalizations
 

@@ -46,7 +46,12 @@ checklist appearing only afterward, is the same violation one layer down.
 6. verdict per claim: pass / fail (with your recomputed number) /
    cannot-verify (with the missing evidence named). overall conclusion
    only after the per-claim table.
-7. tone: findings are about the work, not the worker. every fail carries
+7. output: `output/review.md`, a standalone file — never a section
+   appended into the workpaper being reviewed. the claims checklist,
+   verdict table, discipline checks, and overall conclusion all live here,
+   citing both the reviewed deliverables and the sources reperformed
+   against.
+8. tone: findings are about the work, not the worker. every fail carries
    the evidence that proves it.
 
 ## rationalizations

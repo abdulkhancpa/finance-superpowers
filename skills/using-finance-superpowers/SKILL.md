@@ -30,7 +30,9 @@ Announce at start: "Using finance-superpowers discipline."
 never write a balancing or plug line into any schedule. if a difference
 remains unexplained, it appears in the workpaper as an open item with its
 exact amount and suspected nature. and the threshold and plan are posted
-before any source file's values are read — a threshold reconstructed
+before any source file is opened to read its values: enumerating what
+exists — listing a folder, reading file names — is permitted before that
+point; opening a file to read its values is not. a threshold reconstructed
 afterward to look up-front is a violation, however the writeup is
 ordered.
 </HARD-GATE>
@@ -51,11 +53,20 @@ user why: degrade honestly, don't fail silently and don't fake it.
 
 ## the workpaper
 
-every deliverable ships with `output/workpaper.md` alongside the xlsx. it
-records, in this order:
-1. **threshold** — the materiality/explanation threshold, stated before
-   any findings.
-2. **findings** — each figure with its source file and row/range citation.
+the engagement has one cumulative `output/workpaper.md` covering every
+deliverable — not one workpaper per file. a verb adds its own
+clearly-titled section and never rewrites or deletes another verb's
+section; the file is appended to, never overwritten. if a prior section's
+figure turns out wrong, the correction is recorded as a visible amendment
+(what was wrong, what it is now) — never a silent rewrite, the same rule
+understand applies to a figure already delivered.
+
+section order:
+1. **scope** — the agreed deliverables, sources, and threshold(s), from
+   brainstorm (when it ran) — stated before any findings.
+2. **each verb's section**, in the order the verbs actually ran (understand,
+   clean, transform, reconcile, analyze, document, review, ...) — every
+   figure with its source file and row/range citation.
 3. **assumptions** — every value not traced to a source file (dates,
    bucket boundaries, rates) and why it was chosen.
 4. **open items** — every unexplained difference, its exact amount, and
@@ -63,6 +74,10 @@ records, in this order:
    folded into a total as a plug.
 5. **verification** — the re-footing and control-total checks performed,
    and their results.
+
+each deliverable the engagement produces (an xlsx, a memo) is named in the
+workpaper with its own tie-out; two xlsx deliverables still share the one
+workpaper, not one each.
 
 a number without a citation, a threshold set after the fact, or a
 variance with no open-item entry means the workpaper is not done, no

@@ -25,10 +25,10 @@ All file paths cited in the workpaper and memo (18 data-room files, 3 subledger-
 | 11 | TB hazard: US "prepaid expenses" (1400) stored as text `"77,614.00"` | as stated | Confirmed — `type=str` on load | **PASS** |
 | 12 | TB hazard: Canada "salaries and wages" (5210) duplicated verbatim, 58,349.10 twice | as stated | Confirmed, rows 56 & 57 both 58,349.10 | **PASS** |
 | 13 | TB hazard: merged title range A1:E2 | as stated | Confirmed via `ws.merged_cells.ranges` | **PASS** |
-| 14 | Consolidated TB acct 1200 by entity: US 814,812 + Canada 827,519 + Holdco 840,226 | 2,482,557 | 2,482,557 | **PASS** |
-| 15 | TB-vs-subledger-tie AR population gap (flagged, not chased) | 137,392.50 | 2,619,949.50 − 2,482,557 = 137,392.50 | **PASS** |
+| 14 | Consolidated TB acct 1200 by entity: US 814,812 + Canada 827,519 + Holdco 840,226 | 2,482,557 | 2,482,557 at time of this run; TB regenerated in v1.1 for economic plausibility — current fixture: US 3,050,000 + Canada 780,000, Holdco has no AR = 3,830,000 | **PASS** (as of this run; see v1.1 note) |
+| 15 | TB-vs-subledger-tie AR population gap (flagged, not chased) | 137,392.50 | 2,619,949.50 − 2,482,557 = 137,392.50 at time of this run; current fixture: 3,830,000 − 2,619,949.50 = 1,210,050.50 | **PASS** (as of this run; see v1.1 note) |
 | 16 | tb_extract account-code trap sum (all 3 entities) | 34,530 | 4000+4100+5000+5100+5210+5220+5900 = 34,530 in all three files | **PASS** |
-| 17 | tb_extract expense accounts identical across entities | 5000/5100/5210/5220/5900 identical US/CA/Holdco | Confirmed identical in all 3 files | **PASS** |
+| 17 | tb_extract expense accounts identical across entities | 5000/5100/5210/5220/5900 identical US/CA/Holdco | Confirmed identical in all 3 files at time of this run; confirmed to be a generator bug (`gen_data_room.py`'s `EXPENSE_ROWS` shared across entities) and **fixed in v1.1** — extracts are now entity-specific | **PASS** (as of this run; bug since fixed) |
 | 18 | ar_aging bucket sum | 4,610,000 | 2,690,000+1,180,000+540,000+260,000+120,000−180,000 = 4,610,000 | **PASS** |
 | 19 | ar_aging total ties to balance sheet net AR | 4,610,000 = 4,610,000 | Confirmed | **PASS** |
 | 20 | monthly_revenue_2025 sum | 49,200,000 | Confirmed | **PASS** |

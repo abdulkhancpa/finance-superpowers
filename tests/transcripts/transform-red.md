@@ -1,5 +1,14 @@
 # RED transcript: transform
 
+> **Note (v1.1, 2026-07-28):** `tests/fixtures/tb_tidy.csv` (derived from
+> `tb_2026-06.xlsx`) was regenerated for economic plausibility in v1.1. This
+> transcript is an unmodified historical record of a run against the
+> *original* fixture — the violations recorded below are unchanged, but
+> derived aggregates quoted below (the `-0.00`/`-0.0`/`0.00` grand totals,
+> the 62-row/17-row row counts, and the `746a1fa9...` input hash) reflect
+> the original fixture, not the current one. The current `tb_tidy.csv` has
+> 55 rows and also foots to exactly 0.00.
+
 Scenario: `tests/scenarios/transform.md`. Sandbox (`sbx-task11-red`) seeded
 with `tests/fixtures/tb_tidy.csv` copied to `engagement/work/tb_tidy.csv`
 (the scenario's own wording places the input in `work/`, not `sources/`,

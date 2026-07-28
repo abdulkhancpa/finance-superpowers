@@ -1,5 +1,17 @@
 # End-to-end mini-engagement: Brightwater Distribution Co.
 
+> **Note (v1.1, 2026-07-28):** `tb_2026-06.xlsx` was regenerated for economic
+> plausibility, and `gen_data_room.py`'s per-entity expense rows (previously
+> one shared list copy/pasted across all three entities) were fixed, **after**
+> this engagement was run. This file and the recorded run below are not
+> re-run. The TB-derived figures in `output/workpaper.md`, `output/review.md`,
+> and `output/deal_memo.md` (open items #3 and #5, and the corresponding
+> tie-point/verdict rows) have been updated with minimal, truthful edits to
+> reflect the current fixture and to note where a previously-flagged issue
+> (the copy/paste bug) is now fixed; everything else in those files, and all
+> of `engagement/work/` (including `run-log.jsonl`), is left as the
+> unmodified historical record of the run against the original fixture.
+
 Acceptance test for spec success criterion 2 — the whole finance-superpowers
 library chained on a single realistic engagement, checked by an independent
 reviewer, verified against ground truth planted in the Brightwater fixtures.

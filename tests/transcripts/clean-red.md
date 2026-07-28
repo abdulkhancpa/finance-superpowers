@@ -1,5 +1,16 @@
 # RED transcript: clean
 
+> **Note (v1.1, 2026-07-28):** `tb_2026-06.xlsx` was regenerated for
+> economic plausibility in v1.1 (see `tests/generators/gen_trial_balance.py`).
+> This transcript is an unmodified historical record of a run against the
+> *original* fixture — the failures recorded below are unchanged, but
+> derived aggregates quoted below (the `-964,625.30` reconciliation diff,
+> the `GRAND TOTAL = 964625.3` source total, the `-7.275957614183426e-11`
+> re-sum residual, and the 62-row tidy csv) reflect the original fixture,
+> not the current one. `58,349.10` (the planted duplicate Canada 5210
+> amount) and `77,614.00` (the planted text-typed US 1400 amount) are
+> unchanged and still exact in the current fixture.
+
 Scenario: `tests/scenarios/clean.md`. Sandbox (`sbx-task10-red`) seeded with
 `tb_2026-06.xlsx` copied from `sample-data/brightwater/trial-balance/` into
 `sources/tb_2026-06.xlsx` (1 file). Dispatched to a fresh `general-purpose`

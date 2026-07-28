@@ -11,14 +11,15 @@ Announce at start: "Using analyze to bridge <from> to <to>."
 the bridge must foot: start + sum(drivers) + residual = end, exactly. the
 residual is shown as its own labeled bar with its amount — never smeared
 across other drivers. the threshold and plan are posted, in writing, as
-their own message, before any source file's values are read or compared —
-a plan or finding narrated into the final report only after the deliverable
-is already built is not a plan, however it's introduced.
+their own message, before any source file is opened to read its values
+(the discipline layer's hard gate governs the trigger point) — a plan or
+finding narrated into the final report only after the deliverable is
+already built is not a plan, however it's introduced.
 </HARD-GATE>
 
 1. threshold first, in writing, before touching sources: state the agreed
-   explanation threshold and a short plan before any source file is read
-   for its values — not narrated afterward as if it came first.
+   explanation threshold and a short plan (see hard gate above) — not
+   narrated afterward as if it came first.
 2. decompose against data, not narrative: every driver quantified from a
    source file (cited), not from what usually drives revenue. a driver you
    cannot quantify from the sources is an open item with a stated data
@@ -39,8 +40,10 @@ is already built is not a plan, however it's introduced.
 5. every driver above threshold explained; below-threshold drivers
    aggregated into one labeled "other" bar with its exact amount.
 6. deliverable: bridge schedule via
-   `${CLAUDE_PLUGIN_ROOT}/scripts/write_workbook.py` + workpaper with
-   method, threshold, citations, assumptions, verification (re-foot).
+   `${CLAUDE_PLUGIN_ROOT}/scripts/write_workbook.py` + analyze's own section
+   appended to the engagement's one workpaper, covering method, threshold,
+   and citations — assumptions and verification (re-foot) join the
+   engagement's closing sections, not a separate copy here.
 
 ## rationalizations
 

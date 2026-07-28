@@ -1,63 +1,56 @@
 entity,account,description,balance
-brightwater us,1000,cash - operating,679010.00
-brightwater us,1010,cash - payroll,685800.10
-brightwater us,1200,accounts receivable,814812.00
-brightwater us,1210,allowance for doubtful accounts,-821602.10
-brightwater us,1300,inventory - finished goods,9713.00
+brightwater us,1000,cash - operating,3080687.91
+brightwater us,1010,cash - payroll,165000.00
+brightwater us,1200,accounts receivable,3050000.00
+brightwater us,1210,allowance for doubtful accounts,-138000.00
+brightwater us,1300,inventory - finished goods,4480000.00
 brightwater us,1400,prepaid expenses,77614.00
-brightwater us,1500,fixed assets,145515.00
-brightwater us,1510,accumulated depreciation,-152305.10
-brightwater us,2000,accounts payable,-485020.00
-brightwater us,2100,accrued liabilities,-552921.00
-brightwater us,2200,deferred revenue,-620822.00
-brightwater us,2500,term loan - current,-824525.00
-brightwater us,2600,term loan - long term,-19426.00
-brightwater us,3000,common stock,-291030.00
-brightwater us,4000,product revenue,-97040.00
-brightwater us,4100,freight revenue,-164941.00
-brightwater us,5000,cost of goods sold,776050.00
-brightwater us,5100,freight out,843951.00
-brightwater us,5210,salaries and wages,45642.10
-brightwater us,5220,employee benefits,52432.20
-brightwater us,5300,rent,106753.00
-brightwater us,5400,depreciation,174654.00
-brightwater us,5900,interest expense,514159.00
-brightwater canada,1000,cash - operating,691717.00
-brightwater canada,1010,cash - payroll,698507.10
-brightwater canada,1200,accounts receivable,827519.00
-brightwater canada,1210,allowance for doubtful accounts,-834309.10
-brightwater canada,1300,inventory - finished goods,22420.00
-brightwater canada,1400,prepaid expenses,90321.00
-brightwater canada,1500,fixed assets,158222.00
-brightwater canada,1510,accumulated depreciation,-165012.10
-brightwater canada,2000,accounts payable,-497727.00
-brightwater canada,2100,accrued liabilities,-565628.00
-brightwater canada,2200,deferred revenue,-633529.00
-brightwater canada,2500,term loan - current,-837232.00
-brightwater canada,2600,term loan - long term,-32133.00
-brightwater canada,3000,common stock,-303737.00
-brightwater canada,4000,product revenue,-109747.00
-brightwater canada,4100,freight revenue,-177648.00
-brightwater canada,5000,cost of goods sold,788757.00
-brightwater canada,5100,freight out,856658.00
+brightwater us,1500,fixed assets,3360000.00
+brightwater us,1510,accumulated depreciation,-1120000.00
+brightwater us,2000,accounts payable,-1940000.00
+brightwater us,2100,accrued liabilities,-560000.00
+brightwater us,2200,deferred revenue,-190000.00
+brightwater us,2500,term loan - current,0.00
+brightwater us,2600,term loan - long term,0.00
+brightwater us,3000,common stock,-500000.00
+brightwater us,4000,product revenue,-22300000.00
+brightwater us,4100,freight revenue,-600000.00
+brightwater us,5000,cost of goods sold,17400000.00
+brightwater us,5100,freight out,410000.00
+brightwater us,5210,salaries and wages,3550000.00
+brightwater us,5220,employee benefits,560000.00
+brightwater us,5300,rent,145000.00
+brightwater us,5400,depreciation,165000.00
+brightwater us,5900,interest expense,45000.00
+brightwater canada,1000,cash - operating,620000.00
+brightwater canada,1010,cash - payroll,45000.00
+brightwater canada,1200,accounts receivable,780000.00
+brightwater canada,1210,allowance for doubtful accounts,-32000.00
+brightwater canada,1300,inventory - finished goods,1090000.00
+brightwater canada,1400,prepaid expenses,28500.00
+brightwater canada,1500,fixed assets,755000.00
+brightwater canada,1510,accumulated depreciation,-240000.00
+brightwater canada,2000,accounts payable,-410000.00
+brightwater canada,2100,accrued liabilities,-125000.00
+brightwater canada,2200,deferred revenue,-48000.00
+brightwater canada,2500,term loan - current,0.00
+brightwater canada,2600,term loan - long term,0.00
+brightwater canada,3000,common stock,-150000.00
+brightwater canada,4000,product revenue,-2650000.00
+brightwater canada,4100,freight revenue,-95000.00
+brightwater canada,5000,cost of goods sold,2050000.00
+brightwater canada,5100,freight out,62000.00
 brightwater canada,5210,salaries and wages,58349.10
-brightwater canada,5220,employee benefits,65139.20
-brightwater canada,5300,rent,119460.00
-brightwater canada,5400,depreciation,187361.00
-brightwater canada,5900,interest expense,526866.00
-brightwater holdco,1000,cash - operating,704424.00
-brightwater holdco,1010,cash - payroll,711214.10
-brightwater holdco,1200,accounts receivable,840226.00
-brightwater holdco,1210,allowance for doubtful accounts,-847016.10
-brightwater holdco,1300,inventory - finished goods,35127.00
-brightwater holdco,1400,prepaid expenses,103028.00
-brightwater holdco,1500,fixed assets,170929.00
-brightwater holdco,1510,accumulated depreciation,-177719.10
-brightwater holdco,2000,accounts payable,-510434.00
-brightwater holdco,2100,accrued liabilities,-578335.00
-brightwater holdco,2200,deferred revenue,-646236.00
-brightwater holdco,2500,term loan - current,-849939.00
-brightwater holdco,2600,term loan - long term,-44840.00
-brightwater holdco,3000,common stock,-316444.00
-brightwater holdco,5900,interest expense,539573.00
-brightwater holdco,3900,retained earnings,-964625.30
+brightwater canada,5220,employee benefits,74000.00
+brightwater canada,5300,rent,38000.00
+brightwater canada,5400,depreciation,42000.00
+brightwater canada,5900,interest expense,12000.00
+brightwater holdco,1000,cash - operating,209999.89
+brightwater holdco,1400,prepaid expenses,8500.00
+brightwater holdco,2000,accounts payable,-15000.00
+brightwater holdco,2100,accrued liabilities,-25000.00
+brightwater holdco,2500,term loan - current,-300000.00
+brightwater holdco,2600,term loan - long term,-4200000.00
+brightwater holdco,3000,common stock,-1500000.00
+brightwater holdco,5900,interest expense,95000.00
+brightwater holdco,3900,retained earnings,-5318650.90

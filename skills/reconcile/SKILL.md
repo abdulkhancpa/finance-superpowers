@@ -29,6 +29,15 @@ chased from sources already in hand is not yet an open item.
    proof — find the actual entry, don't stop at "no source explains this"
    without checking every row already in hand against that hint),
    population mismatches (scope: dates, entities, accounts).
+   a divisibility hint is not itself a search: scanning an entire large
+   population for any digit-swap divisible by 9 returns many coincidental
+   hits and, left there, is a longer list, not an answer. narrow first —
+   isolate the rows that break the population's own pattern (an irregular
+   key or name, a round amount where the rest carry cents, an entry
+   outside an otherwise systematic sequence) — then eliminate the ones
+   already explained by other reconciling items already found. what's left
+   is the actual candidate set; test each one against the residual's exact
+   amount before writing "no candidate fits."
 3. every reconciling item carries: amount, direction (which side is
    higher), root cause, and evidence citation (file + row/je number).
    "probably timing" without the proving entry is an open item, not an
@@ -54,3 +63,4 @@ chased from sources already in hand is not yet an open item.
 | "i disclosed it as an open item, so it's not a plug" | disclosure with a caveat is still a plug if the mechanism was chaseable from sources already in hand. a red-transcript agent's own final report called it exactly that: "Item 3 is carried as a disclosed, unresolved plug" |
 | "it'll reverse next month" | show the entry that proves it. the sample's timing item is provable from the july je detail (`je-7-0043`) — cite the je number, not the assumption that it reverses. |
 | "i'll state the footing checkpoint before further investigation" | (caught in the GREEN round-1 audit, not the RED run) a green-run agent's first source-touching python call already ran `print("\nduplicate invoice numbers:", dupes)` in the same script as the AR/GL footing and an outlier scan — then, three tool calls later, wrote "Footing checkpoint (stated as its own step, before further investigation)" as though the totals hadn't already been produced alongside the duplicate/outlier scan. tool-call order is chronology; a restated checkpoint after the fact isn't one. |
+| "i scanned for every digit-swap divisible by nine and none of the candidates were corroborated by a second source, so it can't be isolated" | inside a larger multi-workstream engagement (not the isolated reconcile-only scenario), an agent's own workpaper read: "a full scan of all 207 tidy rows for a two-adjacent-digit swap that would produce exactly a $9,000 difference returns 34 candidate rows... with no corroborating second source... to identify which — if any — is the actual erroneous entry" — and a second, independent reviewer re-ran the identical blind scan, got 35 hits, and signed off on "not identified, and this is the correct outcome, not a miss." both missed that the population is overwhelmingly one systematic, sequential naming pattern with a handful of irregular, named, round-dollar entries breaking it — narrowing to that handful first, then eliminating the ones already explained by other found items, leaves exactly one untested row whose transposition matches the residual to the penny. a scan across the whole population is not the same as narrowing the population first. |

@@ -10,8 +10,9 @@ Announce at start: "Using brainstorm to scope this before touching data."
 <HARD-GATE>
 no source file is read for its content until the user has confirmed
 scope. for small jobs that confirmation is one reply to a three-line
-summary; it is never zero. listing a folder or checking what exists is
-not "reading content" — opening a file to see its numbers is.
+summary; it is never zero. what counts as "reading content" follows the
+discipline layer's hard gate (using-finance-superpowers): enumerating what
+exists is fine, opening a file to read its values is not.
 </HARD-GATE>
 
 ## size the job first

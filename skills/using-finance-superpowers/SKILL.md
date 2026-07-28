@@ -30,7 +30,9 @@ Announce at start: "Using finance-superpowers discipline."
 never write a balancing or plug line into any schedule. if a difference
 remains unexplained, it appears in the workpaper as an open item with its
 exact amount and suspected nature. and the threshold and plan are posted
-before any source file's values are read — a threshold reconstructed
+before any source file is opened to read its values: enumerating what
+exists — listing a folder, reading file names — is permitted before that
+point; opening a file to read its values is not. a threshold reconstructed
 afterward to look up-front is a violation, however the writeup is
 ordered.
 </HARD-GATE>

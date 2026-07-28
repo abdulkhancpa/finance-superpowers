@@ -817,7 +817,7 @@ The generator writes each markdown file, then for each TB-extract CSV writes hea
 - [ ] **Step 2: Run the generator and verify**
 
 Run: `python tests/generators/gen_data_room.py`
-Expected: prints `18 files written` and the revenue identity. Verify: `find sample-data/brightwater/data-room -type f | wc -l` → 18. Grep for accidental real-looking data: `grep -ri "pyxis\|abdul\|@.*\.com" sample-data/` → no matches.
+Expected: prints `18 files written` and the revenue identity. Verify: `find sample-data/brightwater/data-room -type f | wc -l` → 18. Grep for accidental real-looking data: `grep -riE "(your-employer|your-name|[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,})" sample-data/` → no matches (substitute your own real names/domains for the placeholders).
 
 - [ ] **Step 3: Commit**
 
@@ -1647,7 +1647,7 @@ Sections, in order: what this is (the controller-discipline thesis, two paragrap
 
 - [ ] **Step 2: Final repo checks**
 
-Run: `python -m pytest -v` (all pass); `grep -ri "pyxis\|abdul\|@.*\.com" sample-data/ skills/` (no matches); confirm all 10 skill folders exist with valid frontmatter: `python - <<'EOF'` script that parses each SKILL.md frontmatter and asserts keys == {name, description} `EOF`.
+Run: `python -m pytest -v` (all pass); `grep -riE "(your-employer|your-name|[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,})" sample-data/ skills/` (no matches; substitute your own real names/domains for the placeholders); confirm all 10 skill folders exist with valid frontmatter: `python - <<'EOF'` script that parses each SKILL.md frontmatter and asserts keys == {name, description} `EOF`.
 
 - [ ] **Step 3: Commit**
 

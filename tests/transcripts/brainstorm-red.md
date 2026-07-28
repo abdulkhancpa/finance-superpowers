@@ -1,5 +1,13 @@
 # RED transcript: brainstorm
 
+> **Note (v1.1, 2026-07-28):** `tb_2026-06.xlsx` was regenerated for
+> economic plausibility in v1.1 (see `tests/generators/gen_trial_balance.py`).
+> This transcript is an unmodified historical record of runs against the
+> *original* fixture — the violations recorded below are unchanged. No
+> derived TB aggregate is quoted in this transcript (the small-job variant's
+> correct behavior was to stop before ever opening `tb_2026-06.xlsx`), so
+> nothing here is affected by the fixture rebuild.
+
 Scenario: `tests/scenarios/brainstorm.md`. Sandbox seeded with the full
 Brightwater data-room folder (18 files across `contracts/`, `debt/`,
 `financials/`, `hr/`, `legal/`, `tax/`, plus `index_readme.md` — note only

@@ -34,6 +34,9 @@ reconcile's job, not this one.
    correct one you personally used.
 4. never describe a file you have not opened, and never state a total you
    have not computed yourself, from that file, at the time of writing it.
+5. if a figure already delivered turns out wrong, correct it as a visible
+   finding (what was wrong, what it is now) — never silently overwrite the
+   file.
 
 ## many files (data room)
 
@@ -64,5 +67,5 @@ grain, hazards, tie-point list, open questions — every claim cited to file
 | "i already have the total, i can divide/label it across the entities from memory" | a red-transcript agent did exactly this: its tie-out row read "$12,050,000 (US) + $250,000 (CA) + $36,900,000 (Holdco) = $49,200,000" under a heading titled "confirmed exact ties (verified by recomputation)" — but us was actually $36,900,000, canada $12,050,000, holdco $250,000. the grand total was right and every individual label was wrong. re-read the specific file at the moment you write its specific number. |
 | "i caught my own mistake, i'll just fix the file" | the same agent, once the mislabeling above was pointed out, silently edited the delivered file in place with no note that a citation had been wrong. a reader of the original artifact would never know. a corrected citation is itself a finding — record it, don't erase it. |
 | "i inventoried everything, that's obviously all of them" | that same agent opened all 19 files (confirmed directly from its own tool-call transcript) but never once stated the count anywhere, in chat or in the deliverable — "i inventoried everything in sources/" isn't checkable the way "19 files, none skipped" is. state the number. |
-| "i personally summed it right, so the file's fine" | the same transcript's own recomputation correctly excluded the tb's subtotal/caption rows from its balance check — but nothing in the deliverable warned a future reader that naively summing the whole column (subtotal rows included) produces $1,909,985.70, a meaningless number. being careful yourself doesn't put the trap in writing for the next person. |
-| "while i'm mapping the ties i might as well confirm them" | the same deliverable's tie-out section didn't stop at listing expected ties — it declared items "confirmed exact" or "confirmed breaks" and diagnosed a $2.6m debt discrepancy end to end, unprompted, on two file families its own report elsewhere called different scope and period. mapping what should tie to what is not the same task as checking whether it does. |
+| "i personally summed it right, so the file's fine" | the same transcript's own recomputation correctly excluded the tb's subtotal/caption rows from its balance check — but nothing in the deliverable warned a future reader that naively summing the whole column (subtotal rows included) produces "1909985.6999999993," a meaningless number. being careful yourself doesn't put the trap in writing for the next person. |
+| "while i'm mapping the ties i might as well confirm them" | the same deliverable's tie-out section didn't stop at listing expected ties — it declared items "confirmed exact" or "confirmed breaks," including a verdict that tb term loan accounts do "not match the amortization schedule's expected consolidated balance at 2026-06-30 ($4,500,000)," unprompted, on two file families its own report elsewhere called different scope and period. mapping what should tie to what is not the same task as checking whether it does. |

@@ -85,9 +85,10 @@ Same ten skills, reconcile updated. The preparer this time:
   fitting the $9,000 magnitude, and correctly rejected the wrong-direction one
   (a surviving `b-0621` invoice) in favor of `inv-19877` (Stonebridge Market,
   $45,000.00 recorded vs. $54,000.00 implied) — closing the reconciliation to
-  the penny while still honestly disclosing that the $54,000 true amount is
-  not independently confirmed by a third source (no Stonebridge invoice/sales
-  order in the data room).
+  the penny while still honestly disclosing that the subledger's $45,000.00
+  is believed correct (with the GL carrying the transposed $54,000.00), a
+  conclusion not independently confirmed by a third source (no Stonebridge
+  invoice/sales order in the data room).
 - correctly bridged FY2025 revenue: gross tie $49,200,000 (TB extracts =
   `monthly_revenue_2025.csv`) → reported $48,950,000 via the $250,000 freight
   reclass (`notes_fy2025.md`), with the remaining $2,143,000 of growth
@@ -120,8 +121,9 @@ run-2 `output/` folder plus the same sources, posted its claims checklist
 before recomputing anything, then independently recomputed 36 line items
 directly from source files (not from the preparer's own `work/` CSVs):
 34 pass cleanly, 2 pass-with-caveat: row 8, the transposition (its arithmetic
-and direction are confirmed; the $54,000 true amount, as the workpaper itself
-says, is not independently provable from sources in hand), and row 36, the
+and direction are confirmed; the subledger's $45,000.00 is believed correct,
+with the GL carrying the transposed $54,000.00, but as the workpaper itself
+says, this is not independently provable from sources in hand), and row 36, the
 threshold-before-figures claim (the thresholds were stated at the point
 claimed, but a non-financial source file was read for content one step
 earlier — a minor, self-disclosed sequencing slip, not a fabrication). It
@@ -191,11 +193,12 @@ wrong").
 
 ## Concerns / residual risk
 
-- The transposition's *true* corrected amount ($54,000.00 for `inv-19877`)
-  is not independently provable from the fixtures in hand — both the
-  preparer and reviewer disclose this honestly rather than overclaim it,
-  which is the correct posture, but a real engagement would still need the
-  underlying sales document to close it.
+- The transposition's *true* amount (the subledger's $45,000.00 for
+  `inv-19877`, with the GL's $54,000.00 being the mis-keyed figure) is not
+  independently provable from the fixtures in hand by the preparer/reviewer
+  alone — both disclose this honestly rather than overclaim it, which is the
+  correct posture, but a real engagement would still need the underlying
+  sales document to close it.
 - The reconcile fix was validated by one fresh end-to-end re-run, not by a
   dedicated RED/GREEN pair scoped to the reconcile skill in isolation (that
   isolated pair already exists from Task 12 and continues to pass — see

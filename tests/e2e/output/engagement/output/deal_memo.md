@@ -21,7 +21,7 @@ What we computed: 5 of the 212 subledger rows are exact duplicates (same invoice
 
 What we assume: that the 5 duplicate rows are one posting entered twice, not two genuine invoices (justified because every field matches, including the invoice number, which cannot legitimately repeat).
 
-What we could not verify: the $9,000 Stonebridge transposition is the only candidate that fits the math, but it is **not independently confirmed** -- there is no original invoice or sales order for Stonebridge Market in the data room to prove the true amount is $54,000. This is flagged as an open item, not asserted as fact.
+What we could not verify: the $9,000 Stonebridge transposition is the only candidate that fits the math, but it is **not independently confirmed** -- there is no original invoice or sales order for Stonebridge Market in the data room to prove that the subledger's $45,000 is correct and the GL's $54,000 is the transposition error. This is flagged as an open item, not asserted as fact.
 
 ### FY2025 revenue movement (threshold: $250,000)
 

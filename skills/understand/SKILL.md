@@ -56,10 +56,11 @@ reconcile's job, not this one.
    contingencies, related parties, period/scope mismatches between file
    families) with file citations.
 
-Output: a map in `output/workpaper.md` — inventory (with stated count),
-grain, hazards, tie-point list, open questions — every claim cited to file
-(and sheet/row), following the discipline layer's workpaper order
-(threshold, findings, assumptions, open items, verification).
+Output: understand's own section in `output/workpaper.md` — inventory (with
+stated count), grain, hazards, tie-point list, open questions — every claim
+cited to file (and sheet/row). appended per the discipline layer's workpaper
+model: this section joins the engagement's one cumulative workpaper, never
+replacing another verb's section or the file as a whole.
 
 ## rationalizations
 

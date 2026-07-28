@@ -40,8 +40,10 @@ already built is not a plan, however it's introduced.
 5. every driver above threshold explained; below-threshold drivers
    aggregated into one labeled "other" bar with its exact amount.
 6. deliverable: bridge schedule via
-   `${CLAUDE_PLUGIN_ROOT}/scripts/write_workbook.py` + workpaper with
-   method, threshold, citations, assumptions, verification (re-foot).
+   `${CLAUDE_PLUGIN_ROOT}/scripts/write_workbook.py` + analyze's own section
+   appended to the engagement's one workpaper, covering method, threshold,
+   and citations — assumptions and verification (re-foot) join the
+   engagement's closing sections, not a separate copy here.
 
 ## rationalizations
 

@@ -94,14 +94,35 @@ CSV_FILES = {
     "financials/tb_extract_holdco_fy2025.csv": TB_REVENUE["holdco"],
 }
 
-# fixed, deterministic expense rows per entity (account, description, base amount)
-EXPENSE_ROWS = [
-    (5000, "cost of goods sold", 5_400_000),
-    (5100, "freight out", 210_000),
-    (5210, "salaries and wages", 1_860_000),
-    (5220, "employee benefits", 340_000),
-    (5900, "interest expense", 84_000),
-]
+# fixed, deterministic expense rows, per entity (account, description, amount).
+# Each entity has its own rows -- NOT one shared list copy/pasted across all
+# three -- so that consolidated totals tie to the income statement:
+# cogs (5000) 27,300,000 + 8,910,000 = 36,210,000; opex (5100+5210+5220)
+# (630,000+5,400,000+855,000) + (210,000+1,800,000+285,000) = 9,180,000;
+# interest (5900) 180,000 + 60,000 + 900,000 (holdco, which holds the term
+# loan and has no other operations) = 1,140,000.
+EXPENSE_ROWS_BY_ENTITY = {
+    "us": [
+        (5000, "cost of goods sold", 27_300_000),
+        (5100, "freight out", 630_000),
+        (5210, "salaries and wages", 5_400_000),
+        (5220, "employee benefits", 855_000),
+        (5900, "interest expense", 180_000),
+    ],
+    "canada": [
+        (5000, "cost of goods sold", 8_910_000),
+        (5100, "freight out", 210_000),
+        (5210, "salaries and wages", 1_800_000),
+        (5220, "employee benefits", 285_000),
+        (5900, "interest expense", 60_000),
+    ],
+    "holdco": [
+        (5900, "interest expense", 900_000),
+    ],
+}
+COGS_TOTAL = 36_210_000
+OPEX_TOTAL = 9_180_000
+INTEREST_TOTAL = 1_140_000
 
 
 def write_md_files():
@@ -112,11 +133,17 @@ def write_md_files():
 
 
 def write_tb_extracts():
-    """Per-entity TB extract CSVs: revenue rows (4000+4100) tie to TB_REVENUE."""
+    """Per-entity TB extract CSVs: revenue rows (4000+4100) tie to TB_REVENUE.
+
+    Expense rows are entity-specific (see EXPENSE_ROWS_BY_ENTITY) so that
+    consolidated COGS/opex/interest tie to the income statement instead of
+    tripling a single shared list across all three entities.
+    """
     for rel, value in CSV_FILES.items():
         path = ROOT / rel
         path.parent.mkdir(parents=True, exist_ok=True)
         is_us = "_us_" in rel
+        entity = "us" if is_us else ("canada" if "_canada_" in rel else "holdco")
         product_rev = value - 950_000 if is_us else value
         freight_rev = 950_000 if is_us else 0
         with path.open("w", newline="", encoding="utf-8") as f:
@@ -124,7 +151,7 @@ def write_tb_extracts():
             writer.writerow(["account", "description", "fy2025_amount"])
             writer.writerow([4000, "product revenue", product_rev])
             writer.writerow([4100, "freight revenue", freight_rev])
-            for acct, desc, amt in EXPENSE_ROWS:
+            for acct, desc, amt in EXPENSE_ROWS_BY_ENTITY[entity]:
                 writer.writerow([acct, desc, amt])
 
 
@@ -258,10 +285,31 @@ def main():
         f"is+reclass={REV_IS + REV_RECLASS}"
     )
 
+    # expense identity: three TB extracts' expense accounts consolidate to
+    # the income statement's cogs/opex/interest -- each entity has its own
+    # rows now, not one shared list copy/pasted across all three.
+    cogs_total = opex_total = interest_total = 0
+    for entity in ("us", "canada", "holdco"):
+        for acct, _desc, amt in EXPENSE_ROWS_BY_ENTITY[entity]:
+            if acct == 5000:
+                cogs_total += amt
+            elif acct in (5100, 5210, 5220):
+                opex_total += amt
+            elif acct == 5900:
+                interest_total += amt
+    assert cogs_total == COGS_TOTAL, f"cogs identity failed: {cogs_total} != {COGS_TOTAL}"
+    assert opex_total == OPEX_TOTAL, f"opex identity failed: {opex_total} != {OPEX_TOTAL}"
+    assert interest_total == INTEREST_TOTAL, f"interest identity failed: {interest_total} != {INTEREST_TOTAL}"
+
     print("18 files written")
     print(
         f"revenue identity: tb extracts {tb_revenue_total:,} == "
         f"income statement {REV_IS:,} + reclass {REV_RECLASS:,}"
+    )
+    print(
+        f"expense identity: tb extracts cogs {cogs_total:,} / opex {opex_total:,} / "
+        f"interest {interest_total:,} == income statement cogs {COGS_TOTAL:,} / "
+        f"opex {OPEX_TOTAL:,} / interest (within depreciation & interest) {INTEREST_TOTAL:,}"
     )
 
 

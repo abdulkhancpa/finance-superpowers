@@ -38,9 +38,16 @@ ordered.
 ## the working folder
 
 engagement/sources/ (read-only inputs) · work/ (csv intermediates) ·
-output/ (xlsx deliverables via scripts/write_workbook.py + workpaper.md).
+output/ (xlsx deliverables via
+`${CLAUDE_PLUGIN_ROOT}/scripts/write_workbook.py` + workpaper.md).
 if a needed export is missing, say exactly what to request (system,
 report, period, format) and stop — never fabricate data.
+
+if a helper script's path doesn't resolve — `${CLAUDE_PLUGIN_ROOT}` is
+unset, or nothing exists there — say so out loud, name the exact path you
+tried, and stop there. never silently hand-roll a workbook with ad hoc
+formatting code in its place, and never stop dead without telling the
+user why: degrade honestly, don't fail silently and don't fake it.
 
 ## the workpaper
 

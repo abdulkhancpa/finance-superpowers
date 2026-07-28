@@ -15,13 +15,14 @@ This repo is a Claude Code plugin — `.claude-plugin/plugin.json` defines it, `
 To install locally:
 
 1. Clone this repo.
-2. In Claude Code, add it as a plugin marketplace source and install from it:
+2. Install the Python dependencies the two helper scripts need: `pip install -r requirements.txt` (this pulls in `openpyxl`, used by `scripts/write_workbook.py` to build deliverables, plus `pytest` for the test suite). Any Python that can run these scripts works — Claude Code invokes them via `${CLAUDE_PLUGIN_ROOT}`, not a bundled interpreter, so this install has to be on the machine running Claude Code.
+3. In Claude Code, add it as a plugin marketplace source and install from it:
    ```
    /plugin marketplace add /path/to/finance-superpowers
    /plugin install finance-superpowers@finance-superpowers
    ```
    (or point `/plugin marketplace add` at this repo's git URL instead of a local path).
-3. Start a session (or run `/reload-plugins` in one already open). The `using-finance-superpowers` skill loads automatically and announces itself; the other nine verbs trigger from their descriptions as your request matches — you don't invoke them by name.
+4. Start a session (or run `/reload-plugins` in one already open). The `using-finance-superpowers` skill loads automatically and announces itself; the other nine verbs trigger from their descriptions as your request matches — you don't invoke them by name.
 
 This exact flow was verified end to end in this repo, not just checked against docs: `claude plugin marketplace add ./` (local scope) succeeded, `claude plugin install finance-superpowers@finance-superpowers` succeeded, and `claude plugin details finance-superpowers@finance-superpowers` confirmed version `1.0.0`, status enabled, and all ten skills (`analyze, brainstorm, clean, document, reconcile, review, skillify, transform, understand, using-finance-superpowers`) loaded — then both were removed again to leave the environment clean.
 

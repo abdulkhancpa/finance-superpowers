@@ -16,9 +16,10 @@ stated on its own line before the reshape runs; the delivered artifact is
 then reopened fresh and its own written figures re-summed, shown equal to
 that number as one equation — a total carried over from the same
 in-memory pass that built the output is not a check. every xlsx leaves
-through scripts/write_workbook.py, no other path; every figure in the
-output cites the specific source row or range that built it, never one
-blanket file-level mention standing in for a whole sheet.
+through `${CLAUDE_PLUGIN_ROOT}/scripts/write_workbook.py`, no other path;
+every figure in the output cites the specific source row or range that
+built it, never one blanket file-level mention standing in for a whole
+sheet.
 </HARD-GATE>
 
 1. inputs must be tidy. if the profile shows structural problems, stop and
@@ -32,11 +33,11 @@ blanket file-level mention standing in for a whole sheet.
    figures; show `input control total == output control total` as one
    equation with real numbers. any difference is itemized: fx,
    eliminations, intentional exclusions — each with amount and reason.
-4. deliverables are built with scripts/write_workbook.py — csv
-   intermediates in work/, formatted xlsx in output/, workpaper narrating
-   input → rules → output, with every figure citing the specific source
-   row or range that built it, never one blanket mention for a whole
-   sheet.
+4. deliverables are built with
+   `${CLAUDE_PLUGIN_ROOT}/scripts/write_workbook.py` — csv intermediates in
+   work/, formatted xlsx in output/, workpaper narrating input → rules →
+   output, with every figure citing the specific source row or range that
+   built it, never one blanket mention for a whole sheet.
 
 ## rationalizations
 

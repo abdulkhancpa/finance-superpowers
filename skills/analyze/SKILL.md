@@ -38,7 +38,8 @@ is already built is not a plan, however it's introduced.
    terms, regardless of its size relative to the driver threshold.
 5. every driver above threshold explained; below-threshold drivers
    aggregated into one labeled "other" bar with its exact amount.
-6. deliverable: bridge schedule via write_workbook.py + workpaper with
+6. deliverable: bridge schedule via
+   `${CLAUDE_PLUGIN_ROOT}/scripts/write_workbook.py` + workpaper with
    method, threshold, citations, assumptions, verification (re-foot).
 
 ## rationalizations

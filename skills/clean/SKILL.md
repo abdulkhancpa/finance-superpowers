@@ -18,7 +18,8 @@ two; anything you can't prove stays in, flagged, never deleted with a
 hedge stapled on afterward.
 </HARD-GATE>
 
-1. profile first (understand, or `python scripts/profile_table.py`). before
+1. profile first (understand, or
+   `python "${CLAUDE_PLUGIN_ROOT}/scripts/profile_table.py"`). before
    touching a single row, write down the raw control total (the file's own
    naive/grand total) as the number this cleanup must reconcile to.
 2. work on a copy in work/ — the source stays untouched.

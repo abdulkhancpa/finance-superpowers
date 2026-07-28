@@ -19,8 +19,9 @@ reconcile's job, not this one.
 ## single table
 
 1. profile it mechanically first: for csv, run
-   `python scripts/profile_table.py <file>`; for xlsx, read every sheet's
-   dimensions, merged ranges, and first/last rows before characterizing it.
+   `python "${CLAUDE_PLUGIN_ROOT}/scripts/profile_table.py" <file>`; for
+   xlsx, read every sheet's dimensions, merged ranges, and first/last rows
+   before characterizing it.
 2. report: grain (what one row is), row/column counts, and every
    structural hazard found (merged cells, subtotal/caption rows sharing a
    column with the detail they total, duplicated rows, text-typed numbers,

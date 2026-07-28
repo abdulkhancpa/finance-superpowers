@@ -1,0 +1,8 @@
+item,amount,note
+"Raw control total (all 212 rows, source file)",2764449.50,naive sum of open_amount column before any row removed
+Less: duplicate posting inv-20310 northern foods (2nd occurrence),-41250.00,identical invoice/customer/date/amount/batch to first occurrence -- same posting entered twice under batch b-0621
+Less: duplicate posting inv-20311 lakeside grocers (2nd occurrence),-18775.00,identical to first occurrence -- one posting duplicated
+Less: duplicate posting inv-20312 pacific mercantile (2nd occurrence),-26400.00,identical to first occurrence -- one posting duplicated
+Less: duplicate posting inv-20313 harbor supply (2nd occurrence),-22075.00,identical to first occurrence -- one posting duplicated
+Less: duplicate posting inv-20314 northern foods (2nd occurrence),-10000.00,identical to first occurrence -- one posting duplicated
+"Tidy control total (re-summed from tidy csv, 207 rows)",2645949.50,equation: 2764449.50 - 118500.00 = 2645949.50 (residual 0.00)

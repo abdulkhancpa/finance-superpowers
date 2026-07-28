@@ -1,0 +1,11 @@
+item,amount,citation
+Monthly revenue 2025 - sum of 12 months (gross),49200000.00,data-room/financials/monthly_revenue_2025.csv all 12 rows
+TB extract US - product revenue (4000),35950000.00,data-room/financials/tb_extract_us_fy2025.csv row acct 4000
+TB extract US - freight revenue (4100),950000.00,data-room/financials/tb_extract_us_fy2025.csv row acct 4100
+TB extract Canada - product revenue (4000),12050000.00,data-room/financials/tb_extract_canada_fy2025.csv row acct 4000
+TB extract Canada - freight revenue (4100),0.00,data-room/financials/tb_extract_canada_fy2025.csv row acct 4100
+TB extract Holdco - product revenue (4000),250000.00,"data-room/financials/tb_extract_holdco_fy2025.csv row acct 4000 -- FLAG: Holdco has no operations per trial-balance/tb_2026-06.xlsx (Holdco TOTAL REVENUE=0 in that later TB); this fy2025 entry exactly equals the freight reclass amount disclosed in notes_fy2025.md -- possible misclassification, unresolved, see open items"
+TB extract Holdco - freight revenue (4100),0.00,data-room/financials/tb_extract_holdco_fy2025.csv row acct 4100
+"TB extracts total (US+Canada+Holdco, gross)",49200000.00,sum of rows above -- ties exactly to monthly_revenue_2025.csv total
+"Income statement FY2025 revenue (as reported, net of freight reclass)",48950000.00,data-room/financials/income_statement_fy2025.md row 'revenue' FY2025 column
+Gap: gross tie total minus reported net revenue,250000.00,"Computed 49,200,000 - 48,950,000; explained by notes_fy2025.md note 1 (freight reclass) -- zero unexplained remainder"

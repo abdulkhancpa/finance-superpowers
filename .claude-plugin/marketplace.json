@@ -1,0 +1,14 @@
+{
+  "name": "finance-superpowers",
+  "owner": {
+    "name": "Abdul Khan"
+  },
+  "description": "Marketplace for the finance-superpowers plugin: nine verb skills plus a discipline layer for finance and accounting professionals.",
+  "plugins": [
+    {
+      "name": "finance-superpowers",
+      "source": "./",
+      "description": "Working discipline for finance and accounting professionals: nine verb skills that tie everything out, never plug a difference, and cite every number."
+    }
+  ]
+}

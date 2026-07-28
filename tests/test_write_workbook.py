@@ -59,6 +59,62 @@ def test_empty_assumptions_says_none(tmp_path):
     assert "None." in texts
 
 
+def test_accounting_negatives_and_currency_symbols(tmp_path):
+    p = tmp_path / "acct.csv"
+    with open(p, "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["account", "description", "amount"])
+        w.writerow(["1000", "cash", "$5,000.00"])
+        w.writerow(["1200", "ar", "(1,234.00)"])
+        w.writerow(["1300", "other", "($6.50)"])
+    out = write_workbook(
+        tmp_path / "out" / "acct.xlsx",
+        cover={"title": "t"},
+        sheets=[{"name": "schedule", "csv": p, "money_cols": ["amount"], "total_rows": []}],
+    )
+    ws = load_workbook(out)["schedule"]
+    assert ws["C2"].value == 5000.0
+    assert ws["C3"].value == -1234.0
+    assert ws["C4"].value == -6.5
+
+
+def test_money_cols_mismatch_raises(tmp_path):
+    p = make_csv(tmp_path)
+    import pytest
+    with pytest.raises(ValueError):
+        write_workbook(
+            tmp_path / "out" / "bad.xlsx",
+            cover={"title": "t"},
+            # "Amount" (capital A) does not match the "amount" header
+            sheets=[{"name": "schedule", "csv": p, "money_cols": ["Amount"], "total_rows": []}],
+        )
+
+
+def test_empty_csv_does_not_crash(tmp_path):
+    p = tmp_path / "empty.csv"
+    p.write_text("", encoding="utf-8")
+    out = write_workbook(
+        tmp_path / "out" / "empty.xlsx",
+        cover={"title": "t"},
+        sheets=[{"name": "schedule", "csv": p, "money_cols": [], "total_rows": []}],
+    )
+    wb = load_workbook(out)
+    assert "schedule" in wb.sheetnames
+
+
+def test_long_sheet_name_truncated_no_warning(tmp_path, recwarn):
+    p = make_csv(tmp_path)
+    long_name = "a" * 40
+    out = write_workbook(
+        tmp_path / "out" / "long.xlsx",
+        cover={"title": "t"},
+        sheets=[{"name": long_name, "csv": p, "money_cols": ["amount"], "total_rows": []}],
+    )
+    wb = load_workbook(out)
+    assert all(len(name) <= 31 for name in wb.sheetnames)
+    assert not any("more than 31 characters" in str(w.message) for w in recwarn.list)
+
+
 def test_cli_manifest(tmp_path):
     csv_path = make_csv(tmp_path)
     out_path = tmp_path / "cli_output.xlsx"

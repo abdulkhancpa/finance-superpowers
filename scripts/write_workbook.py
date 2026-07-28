@@ -14,10 +14,27 @@ from openpyxl.styles import Border, Font, PatternFill, Side
 from openpyxl.utils import get_column_letter
 
 MONEY_FMT = "#,##0.00;(#,##0.00)"
+MAX_SHEET_NAME_LEN = 31
 HEADER_FILL = PatternFill("solid", fgColor="1F3864")
 HEADER_FONT = Font(bold=True, color="FFFFFF")
 TOTAL_FONT = Font(bold=True)
 TOP_BORDER = Border(top=Side(style="thin"))
+
+
+def _parse_money(val):
+    """Parse a money string into a float.
+
+    Handles thousands separators (1,234.00), a leading currency symbol
+    ($5,000.00), and accounting-style parenthesized negatives
+    ((1,234.00) -> -1234.00), including both together (($6.50)).
+    """
+    s = str(val).strip()
+    negative = s.startswith("(") and s.endswith(")")
+    if negative:
+        s = s[1:-1].strip()
+    s = s.replace(",", "").replace("$", "").strip()
+    num = float(s)
+    return -num if negative else num
 
 
 def _autofit(ws):
@@ -49,18 +66,35 @@ def _write_cover(wb, cover):
 
 
 def _write_sheet(wb, spec):
-    ws = wb.create_sheet(spec["name"])
+    name = spec["name"]
+    if len(name) > MAX_SHEET_NAME_LEN:
+        name = name[:MAX_SHEET_NAME_LEN]
+    ws = wb.create_sheet(name)
     with open(spec["csv"], newline="", encoding="utf-8-sig") as f:
         rows = list(csv.reader(f))
+    if not rows:
+        # empty source csv: nothing to write, but don't crash the run.
+        ws.freeze_panes = "A2"
+        _autofit(ws)
+        return
     header, data = rows[0], rows[1:]
-    money_idx = {header.index(c) for c in spec.get("money_cols", []) if c in header}
-    for j, name in enumerate(header, start=1):
-        cell = ws.cell(row=1, column=j, value=name)
+    money_cols = spec.get("money_cols", [])
+    unmatched = [c for c in money_cols if c not in header]
+    if unmatched:
+        raise ValueError(
+            f"money_cols {unmatched!r} not found in header {header!r} of "
+            f"sheet {spec['name']!r} ({spec['csv']}) -- check for a case "
+            f"or spelling mismatch; a silently-skipped money column would "
+            f"write numbers as unsummable text with no warning."
+        )
+    money_idx = {header.index(c) for c in money_cols}
+    for j, colname in enumerate(header, start=1):
+        cell = ws.cell(row=1, column=j, value=colname)
         cell.font, cell.fill = HEADER_FONT, HEADER_FILL
     for i, row in enumerate(data, start=2):
         for j, val in enumerate(row, start=1):
             if (j - 1) in money_idx and val not in ("", None):
-                cell = ws.cell(row=i, column=j, value=float(str(val).replace(",", "")))
+                cell = ws.cell(row=i, column=j, value=_parse_money(val))
                 cell.number_format = MONEY_FMT
             else:
                 ws.cell(row=i, column=j, value=val)

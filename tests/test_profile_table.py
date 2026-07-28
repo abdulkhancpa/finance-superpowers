@@ -33,3 +33,23 @@ def test_profile_columns(tmp_path):
     assert amount["blank"] == 1
     account = next(c for c in prof["columns"] if c["name"] == "account")
     assert account["type"] == "text" and account["distinct"] == 4
+
+
+def make_accounting_csv(tmp_path):
+    p = tmp_path / "acct.csv"
+    rows = [
+        ["account", "amount"],
+        ["A1000", "$5,000.00"],
+        ["A1200", "(1,234.00)"],
+        ["A1300", "($6.50)"],
+    ]
+    with open(p, "w", newline="", encoding="utf-8") as f:
+        csv.writer(f).writerows(rows)
+    return p
+
+
+def test_profile_handles_accounting_negatives_and_currency_symbols(tmp_path):
+    prof = profile_table(make_accounting_csv(tmp_path))
+    amount = next(c for c in prof["columns"] if c["name"] == "amount")
+    assert amount["type"] == "numeric"
+    assert amount["sum"] == 5000.0 - 1234.0 - 6.5

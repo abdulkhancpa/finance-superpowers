@@ -11,10 +11,20 @@ from collections import Counter
 
 
 def _as_number(s):
+    """Parse a value as a number, tolerant of accounting formatting:
+    thousands separators (1,234.00), a leading currency symbol
+    ($5,000.00), and parenthesized negatives ((1,234.00) -> -1234.00).
+    """
+    text = str(s).strip()
+    negative = text.startswith("(") and text.endswith(")")
+    if negative:
+        text = text[1:-1].strip()
+    text = text.replace(",", "").replace("$", "").strip()
     try:
-        return float(str(s).replace(",", ""))
+        num = float(text)
     except ValueError:
         return None
+    return -num if negative else num
 
 
 def profile_table(csv_path):

@@ -13,7 +13,7 @@ beyond its working directory on its own initiative, read
 `task-16-brief.md` (which contains the exact expected corner-cutting list
 and the target skillify skill text) and the already-shipped `reconcile`
 skill, and — worse — wrote its output *skill* to the real user account's
-global skills directory (`C:/Users/AbdulKhan/.claude/skills/monthly-ar-recon/`)
+global skills directory (`~/.claude/skills/monthly-ar-recon/`)
 instead of confining it to the sandbox. That run is discarded as a RED
 baseline: it had foreknowledge of the exact answer key, so its
 comparatively disciplined output (correct frontmatter, a "Testing this

@@ -1,0 +1,32 @@
+{
+  "output": "C:/Users/ABDULK~1/AppData/Local/Temp/claude/C--Users-AbdulKhan-projects-finance-superpowers/89d45c9e-4a97-4a77-a89d-72902f922277/scratchpad/sbx-task17-v2/engagement/output/ar_gl_reconciliation.xlsx",
+  "cover": {
+    "title": "Brightwater Distribution Co. -- AR Subledger to GL Reconciliation (2026-06)",
+    "engagement": "Initial financial diligence -- AR tie-out",
+    "date": "2026-07-28",
+    "sources": [
+      "engagement/sources/subledger-tie/ar_subledger_2026-06.csv",
+      "engagement/sources/subledger-tie/gl_summary_2026-06.csv",
+      "engagement/sources/subledger-tie/gl_je_detail_2026-07.csv"
+    ],
+    "assumptions": [
+      "Explanation threshold: $5,000 (agreed with deal lead before any figure computed).",
+      "5 exact-duplicate rows in ar_subledger_2026-06.csv (batch b-0621) treated as one posting entered twice, not two real invoices -- removed in clean step.",
+      "inv-19877 (Stonebridge Market) treated as a probable digit-transposition (45,000 recorded vs 54,000 true) based on exact-amount + direction fit against the residual; NOT independently confirmed by a third source (no Stonebridge contract/invoice in data room) -- see open items."
+    ]
+  },
+  "sheets": [
+    {
+      "name": "cleaning_log",
+      "csv": "C:/Users/ABDULK~1/AppData/Local/Temp/claude/C--Users-AbdulKhan-projects-finance-superpowers/89d45c9e-4a97-4a77-a89d-72902f922277/scratchpad/sbx-task17-v2/engagement/work/cleaning_log_ar_subledger.csv",
+      "money_cols": ["amount"],
+      "total_rows": [0, 6]
+    },
+    {
+      "name": "reconciliation",
+      "csv": "C:/Users/ABDULK~1/AppData/Local/Temp/claude/C--Users-AbdulKhan-projects-finance-superpowers/89d45c9e-4a97-4a77-a89d-72902f922277/scratchpad/sbx-task17-v2/engagement/work/ar_gl_reconciliation.csv",
+      "money_cols": ["amount"],
+      "total_rows": [3, 5]
+    }
+  ]
+}

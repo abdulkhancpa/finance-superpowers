@@ -1,0 +1,37 @@
+{
+  "output": "C:/Users/ABDULK~1/AppData/Local/Temp/claude/C--Users-AbdulKhan-projects-finance-superpowers/89d45c9e-4a97-4a77-a89d-72902f922277/scratchpad/sbx-task17-v2/engagement/output/revenue_bridge_fy2025.xlsx",
+  "cover": {
+    "title": "Brightwater Distribution Co. -- FY2025 Revenue Bridge (FY2024 to FY2025)",
+    "engagement": "Initial financial diligence -- revenue movement analysis",
+    "date": "2026-07-28",
+    "sources": [
+      "engagement/sources/data-room/financials/income_statement_fy2025.md",
+      "engagement/sources/data-room/financials/monthly_revenue_2025.csv",
+      "engagement/sources/data-room/financials/notes_fy2025.md",
+      "engagement/sources/data-room/financials/tb_extract_us_fy2025.csv",
+      "engagement/sources/data-room/financials/tb_extract_canada_fy2025.csv",
+      "engagement/sources/data-room/financials/tb_extract_holdco_fy2025.csv",
+      "engagement/sources/data-room/contracts/lakeside_grocers_agreement.md"
+    ],
+    "assumptions": [
+      "Explanation threshold: $250,000 (agreed with deal lead before any figure computed).",
+      "FY2024 revenue (44,120,000) is assumed to already be on the gross (pre-reclass) presentation basis, since notes_fy2025.md states the freight netting began in FY2025 and 'prior years presented it in revenue' -- so FY2024 vs FY2025-gross is treated as like-for-like for the growth driver.",
+      "Lakeside Grocers new-contract dollar impact ($2,937,000) is an approximation: the source document states only 'approximately 6% of consolidated revenue', applied to FY2025 reported revenue of $48,950,000 -- not an exact figure from a source.",
+      "The $2,143,000 'other/unattributed organic growth' bar is a plug-free labeled residual of the growth driver, NOT an unexplained bridge remainder (the bridge itself foots exactly to zero) -- it is carried as its own open item because it cannot be decomposed into named drivers from the sources available."
+    ]
+  },
+  "sheets": [
+    {
+      "name": "gross_tie",
+      "csv": "C:/Users/ABDULK~1/AppData/Local/Temp/claude/C--Users-AbdulKhan-projects-finance-superpowers/89d45c9e-4a97-4a77-a89d-72902f922277/scratchpad/sbx-task17-v2/engagement/work/revenue_gross_tie.csv",
+      "money_cols": ["amount"],
+      "total_rows": [7, 9]
+    },
+    {
+      "name": "revenue_bridge",
+      "csv": "C:/Users/ABDULK~1/AppData/Local/Temp/claude/C--Users-AbdulKhan-projects-finance-superpowers/89d45c9e-4a97-4a77-a89d-72902f922277/scratchpad/sbx-task17-v2/engagement/work/revenue_bridge_fy2025.csv",
+      "money_cols": ["amount"],
+      "total_rows": [0, 4]
+    }
+  ]
+}

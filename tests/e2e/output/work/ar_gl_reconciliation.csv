@@ -1,0 +1,7 @@
+item,amount,direction,citation
+Side A - AR subledger control total (tidy),2645949.50,,work/ar_subledger_2026-06_tidy.csv (207 rows re-summed after removing 5 duplicate postings; see cleaning_log sheet)
+"Less: timing - inv-20241 Cedar Valley Co-op ($35,000 dated 2026-06-30) included in subledger June population but not posted to GL until July",-35000.00,subledger higher than GL,sources/subledger-tie/gl_je_detail_2026-07.csv row1 (je-7-0043 dated 2026-07-02); sources/subledger-tie/ar_subledger_2026-06.csv row inv-20241
+"Add: probable transposition correction - inv-19877 Stonebridge Market recorded as 45,000.00; digit-swap to 54,000.00 exactly closes residual in the required direction",9000.00,GL higher than subledger (subledger understated),sources/subledger-tie/ar_subledger_2026-06.csv row inv-19877 (only unexplained irregular/manually-keyed invoice remaining; pending confirmation against original stonebridge sales invoice -- not present in data room)
+Adjusted Side A,2619949.50,,computed: 2645949.50 - 35000.00 + 9000.00
+Side B - GL account 1200 ending balance (2026-06),2619949.50,,sources/subledger-tie/gl_summary_2026-06.csv row1
+Unexplained remainder,0.00,,adjusted Side A minus Side B

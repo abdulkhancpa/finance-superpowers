@@ -119,9 +119,13 @@ A second subagent, given only the review skill's text and pointed at the
 run-2 `output/` folder plus the same sources, posted its claims checklist
 before recomputing anything, then independently recomputed 36 line items
 directly from source files (not from the preparer's own `work/` CSVs):
-35 pass, 1 pass-with-caveat (the transposition's arithmetic and direction are
-confirmed; the $54,000 true amount, as the workpaper itself says, is not
-independently provable from sources in hand). It verified every cited
+34 pass cleanly, 2 pass-with-caveat: row 8, the transposition (its arithmetic
+and direction are confirmed; the $54,000 true amount, as the workpaper itself
+says, is not independently provable from sources in hand), and row 36, the
+threshold-before-figures claim (the thresholds were stated at the point
+claimed, but a non-financial source file was read for content one step
+earlier — a minor, self-disclosed sequencing slip, not a fabrication). It
+verified every cited
 filename exists in `sources/` (no fabricated citations), reopened both xlsx
 files fresh with `openpyxl` and confirmed they foot to the workpaper's own
 figures, and explicitly confirmed all three planted AR items (duplicate,
@@ -167,10 +171,11 @@ was correct.
     row, text-typed US `1400` cell `'77,614.00'`) — all four confirmed
     present in the fixture and all four named in the run-2 workpaper's
     understand section.
-- **Reviewer's reperformance passes**: 35/36 independently recomputed line
-  items pass; the one pass-with-caveat is the transposition's unprovability
-  of the *true* amount, which both the preparer and reviewer already flag
-  honestly rather than overclaim.
+- **Reviewer's reperformance passes**: 34/36 independently recomputed line
+  items pass cleanly; 2 pass with caveat — the transposition's unprovability
+  of the *true* amount (row 8) and the source-read-before-threshold
+  sequencing slip (row 36) — both of which the preparer and reviewer already
+  flag honestly rather than overclaim.
 
 ## What was fixed
 

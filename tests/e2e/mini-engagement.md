@@ -47,6 +47,19 @@ miss." Both the preparer and the independent reviewer missed the transposition
 on `inv-19877` (Stonebridge Market: recorded $45,000.00 vs. an implied
 $54,000.00, exactly the $9,000 residual).
 
+*(Footnote on the 34 vs. 35 count: the two agents' scans were not the same
+method and neither script survived for a byte-for-byte diff. A third,
+independent recompute for this note, using only genuine adjacent-integer-digit
+swaps against the tidy 207-row population, found 25 rows whose swap produces
+an exact $9,000 difference (including `inv-19877` itself) — a third distinct
+number. All three counts depend on exactly how "digit swap" is defined
+(adjacent digits only vs. any two digits, integer part only vs. including
+cents, magnitude-only vs. signed direction), so the 34-vs-35 discrepancy is
+recorded as unreconciled/methodology-dependent rather than resolved to a
+single true count. It does not affect the conclusion: none of the three
+scans used narrowing, and narrowing — not the raw candidate count — is what
+run 2's fix actually changed.)*
+
 ## Fix
 
 `skills/reconcile/SKILL.md` step 2 was under-specified for a busy,
@@ -184,3 +197,19 @@ wrong").
   `tests/scenarios/reconcile.md` / `tests/transcripts/reconcile-red.md`).
   This task's fix was validated in the harder, busier, multi-workstream
   context where it actually failed.
+- **Undisclosed confound in the RED/GREEN pair above, caught on task review,
+  not by me at the time**: `skills/reconcile/SKILL.md`'s rationalization
+  table has named this exact fixture's answer — invoice `inv-19877`, recorded
+  $45,000.00 vs. an implied $54,000.00 — since Task 12's commit `e412bf4`,
+  well before this task's run 1. Both engagement agents in both runs were
+  handed that skill text inline, meaning both were *given* the answer in
+  their own instructions before they ever opened a source file. Run 1 still
+  missed it despite that, which is mildly reassuring (the pre-existing text
+  wasn't sufficient on its own), but run 2's pass is **not a clean test of
+  whether the new narrowing heuristic generalizes** to an engagement that
+  doesn't already contain its answer inside the skill text it was given. A
+  real test of generalization would need either a fixture whose rationalization
+  table doesn't already spell out the specific invoice/amounts, or a version
+  of the skill text with that one rationalization row held back. This was not
+  done here, and the fix should be read as "did not obviously help despite
+  being handed the answer twice" rather than "proven to generalize."

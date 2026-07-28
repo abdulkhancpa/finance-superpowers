@@ -166,11 +166,9 @@ index 16) computed the AR raw total, the GL total, and the raw difference
 (`print("\nduplicate invoice numbers:", dupes)`) and an outlier scan,
 printing all of it in one combined result. Only afterward (index 22,
 three tool calls and one hypothesis-testing script later) did the agent
-write: "Footing checkpoint (stated as its own step, before further
-investigation)" — prose claiming a sequencing that the actual tool-call
+write: "Footing checkpoint (stated as its own step, before further investigation)" — prose claiming a sequencing that the actual tool-call
 order contradicts: the duplicates and the transposition hypothesis
-(`Hypothesis: GL = normal + batch(once) = 2,565,949.50 vs actual GL
-2,619,949.50, delta 54,000.00`, index 20) were already computed before
+(`Hypothesis: GL = normal + batch(once) = 2,565,949.50 vs actual GL 2,619,949.50, delta 54,000.00`, index 20) were already computed before
 that "checkpoint" text was written. This is the same anti-pattern the
 discipline layer's own rationalization table already names for a
 threshold ("document order is not chronology") applied to reconcile's

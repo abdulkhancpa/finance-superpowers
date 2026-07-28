@@ -10,7 +10,7 @@ This is a methodology library, not a knowledge library — it teaches no account
 
 ## Install
 
-This repo is a Claude Code plugin — `.claude-plugin/plugin.json` defines it, and `skills/` holds the ten SKILL.md files, each following the open [agentskills.io](https://agentskills.io) standard.
+This repo is a Claude Code plugin — `.claude-plugin/plugin.json` defines it, `.claude-plugin/marketplace.json` catalogs it as a single-plugin marketplace, and `skills/` holds the ten SKILL.md files, each following the open [agentskills.io](https://agentskills.io) standard.
 
 To install locally:
 
@@ -21,7 +21,9 @@ To install locally:
    /plugin install finance-superpowers@finance-superpowers
    ```
    (or point `/plugin marketplace add` at this repo's git URL instead of a local path).
-3. Start a session. The `using-finance-superpowers` skill loads automatically and announces itself; the other nine verbs trigger from their descriptions as your request matches — you don't invoke them by name.
+3. Start a session (or run `/reload-plugins` in one already open). The `using-finance-superpowers` skill loads automatically and announces itself; the other nine verbs trigger from their descriptions as your request matches — you don't invoke them by name.
+
+This exact flow was verified end to end in this repo, not just checked against docs: `claude plugin marketplace add ./` (local scope) succeeded, `claude plugin install finance-superpowers@finance-superpowers` succeeded, and `claude plugin details finance-superpowers@finance-superpowers` confirmed version `1.0.0`, status enabled, and all ten skills (`analyze, brainstorm, clean, document, reconcile, review, skillify, transform, understand, using-finance-superpowers`) loaded — then both were removed again to leave the environment clean.
 
 Because SKILL.md is a portable format, the `skills/` directory also works as a plain skills folder in any harness that supports the standard — the plugin manifest is a convenience, not a requirement.
 
@@ -97,7 +99,7 @@ Each skill went through the same RED/GREEN/REFACTOR loop before it shipped:
 
 The recorded RED transcripts live in `tests/transcripts/` (one per skill, e.g. `reconcile-red.md`), and the scenarios that produced them are in `tests/scenarios/`. These transcripts are also the source material for each skill's rationalization table — every "excuse → reality" row quotes an agent's own recorded words back at it, not a hypothetical.
 
-On top of the per-skill tests, `tests/e2e/` holds a full mini-engagement that chains all ten skills end to end on Brightwater — a deal-lead prompt covering data-room review, an AR tie, a revenue bridge, and a findings memo — checked against the ground truth planted in the fixtures. The committed reference output is under `tests/e2e/output/engagement/`: a real `sources/` → `work/` → `output/` folder a reviewer who has never seen Claude could open and re-perform, with `output/workpaper.md` and `output/review.md` as the audit trail. `tests/e2e/mini-engagement.md` narrates the run, including what the RED (no-skills) pass missed.
+On top of the per-skill tests, `tests/e2e/` holds a full mini-engagement on Brightwater that chains **brainstorm → understand → clean → reconcile → analyze → document**, then an independent **review** pass over the result — a deal-lead prompt covering data-room review, an AR tie, a revenue bridge, and a findings memo — checked against the ground truth planted in the fixtures. `transform` was exercised in a lighter form folded into `analyze`'s aggregation step rather than as its own pass, since this engagement had no CoA/FX remapping to do; `skillify` isn't part of an engagement run at all — it mints new skills from a session afterward, so it has no place in this one. The committed reference output is under `tests/e2e/output/engagement/`: a real `sources/` → `work/` → `output/` folder a reviewer who has never seen Claude could open and re-perform, with `output/workpaper.md` and `output/review.md` as the audit trail. `tests/e2e/mini-engagement.md` narrates the run, including what the RED (no-skills) pass missed.
 
 Two shared helper scripts back the skills and are themselves unit-tested (`tests/test_write_workbook.py`, `tests/test_profile_table.py`): `scripts/write_workbook.py` (the xlsx formatting bar every deliverable goes through) and `scripts/profile_table.py` (the tidy-table profiler used by understand and clean).
 

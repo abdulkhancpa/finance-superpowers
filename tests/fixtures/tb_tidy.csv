@@ -1,11 +1,11 @@
 entity,account,description,balance
-brightwater us,1000,cash - operating,1380000.00
+brightwater us,1000,cash - operating,3080687.91
 brightwater us,1010,cash - payroll,165000.00
 brightwater us,1200,accounts receivable,3050000.00
 brightwater us,1210,allowance for doubtful accounts,-138000.00
-brightwater us,1300,inventory - finished goods,3480000.00
+brightwater us,1300,inventory - finished goods,4480000.00
 brightwater us,1400,prepaid expenses,77614.00
-brightwater us,1500,fixed assets,2760000.00
+brightwater us,1500,fixed assets,3360000.00
 brightwater us,1510,accumulated depreciation,-1120000.00
 brightwater us,2000,accounts payable,-1940000.00
 brightwater us,2100,accrued liabilities,-560000.00
@@ -22,13 +22,13 @@ brightwater us,5220,employee benefits,560000.00
 brightwater us,5300,rent,145000.00
 brightwater us,5400,depreciation,165000.00
 brightwater us,5900,interest expense,45000.00
-brightwater canada,1000,cash - operating,320000.00
+brightwater canada,1000,cash - operating,620000.00
 brightwater canada,1010,cash - payroll,45000.00
 brightwater canada,1200,accounts receivable,780000.00
 brightwater canada,1210,allowance for doubtful accounts,-32000.00
-brightwater canada,1300,inventory - finished goods,890000.00
+brightwater canada,1300,inventory - finished goods,1090000.00
 brightwater canada,1400,prepaid expenses,28500.00
-brightwater canada,1500,fixed assets,640000.00
+brightwater canada,1500,fixed assets,755000.00
 brightwater canada,1510,accumulated depreciation,-240000.00
 brightwater canada,2000,accounts payable,-410000.00
 brightwater canada,2100,accrued liabilities,-125000.00
@@ -53,4 +53,4 @@ brightwater holdco,2500,term loan - current,-300000.00
 brightwater holdco,2600,term loan - long term,-4200000.00
 brightwater holdco,3000,common stock,-1500000.00
 brightwater holdco,5900,interest expense,95000.00
-brightwater holdco,3900,retained earnings,-1402962.99
+brightwater holdco,3900,retained earnings,-5318650.90

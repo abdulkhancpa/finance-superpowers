@@ -21,6 +21,18 @@ with the data room's positive pre-tax income), and the term loan balance
 matches the 2026-06-30 balance on the data room's amortization schedule
 (4,800,000 less two quarterly principal payments of 150,000).
 
+Retained earnings rolls forward from the data room's FY2025 close, rather
+than being an arbitrary balancing number: opening retained earnings
+(2025-12-31) = FY2025 closing equity (6,530,000) minus consolidated common
+stock (2,150,000) = 4,380,000; the single holdco retained-earnings plug
+that balances this TB is required to equal opening retained earnings plus
+this period's consolidated net income (H1 2026), so consolidated equity
+here is 6,530,000 + H1 net income -- continuous with the data room's
+close, not a discontinuous drop. Asset balances (cash/inventory/fixed
+assets at us and canada) were increased from an earlier draft specifically
+to make the balancing plug land on that continuity target instead of an
+arbitrary smaller number; see the roll-forward assertion in main().
+
 Entity shape:
   - brightwater us: the large operating entity (full P&L and balance sheet).
   - brightwater canada: a smaller operating entity, same account structure.
@@ -43,8 +55,9 @@ from openpyxl.styles import Font
 
 OUT = Path(__file__).resolve().parents[2] / "sample-data" / "brightwater" / "trial-balance" / "tb_2026-06.xlsx"
 
-# Reference point only (not required to tie exactly -- different period).
+# Reference points only (not required to tie exactly -- different period).
 DATA_ROOM_ANNUAL_REVENUE = 49_200_000
+DATA_ROOM_FY2025_CLOSING_EQUITY = 6_530_000
 
 SECTIONS = [
     ("assets", [(1000, "cash - operating"), (1010, "cash - payroll"),
@@ -74,10 +87,10 @@ ENTITIES = ["brightwater us", "brightwater canada", "brightwater holdco"]
 # text-amount hazards are planted on exactly these two rows below.
 AMOUNTS = {
     "brightwater us": {
-        1000: 1_380_000.00, 1010: 165_000.00,
+        1000: 3_080_687.91, 1010: 165_000.00,
         1200: 3_050_000.00, 1210: -138_000.00,
-        1300: 3_480_000.00, 1400: 77_614.00,
-        1500: 2_760_000.00, 1510: -1_120_000.00,
+        1300: 4_480_000.00, 1400: 77_614.00,
+        1500: 3_360_000.00, 1510: -1_120_000.00,
         2000: -1_940_000.00, 2100: -560_000.00, 2200: -190_000.00,
         2500: 0.00, 2600: 0.00,
         3000: -500_000.00,
@@ -86,10 +99,10 @@ AMOUNTS = {
         5220: 560_000.00, 5300: 145_000.00, 5400: 165_000.00, 5900: 45_000.00,
     },
     "brightwater canada": {
-        1000: 320_000.00, 1010: 45_000.00,
+        1000: 620_000.00, 1010: 45_000.00,
         1200: 780_000.00, 1210: -32_000.00,
-        1300: 890_000.00, 1400: 28_500.00,
-        1500: 640_000.00, 1510: -240_000.00,
+        1300: 1_090_000.00, 1400: 28_500.00,
+        1500: 755_000.00, 1510: -240_000.00,
         2000: -410_000.00, 2100: -125_000.00, 2200: -48_000.00,
         2500: 0.00, 2600: 0.00,
         3000: -150_000.00,
@@ -175,6 +188,31 @@ def main():
         f"expenses {total_expenses} must be less than revenue {abs(revenue)} "
         f"(the company is profitable, per the data room's pre-tax income)")
 
+    # --- retained-earnings roll-forward -------------------------------
+    # Opening RE (2025-12-31) = data room's FY2025 closing equity minus
+    # consolidated common stock. The holdco 3900 plug that balances this TB
+    # must equal opening RE plus this period's net income, so consolidated
+    # equity is continuous with the data room's close instead of an
+    # arbitrary balancing number.
+    net_income = -revenue - total_expenses
+    common_stock_total = total(3000)
+    opening_retained_earnings = round(DATA_ROOM_FY2025_CLOSING_EQUITY - abs(common_stock_total), 2)
+    re_signed = next(
+        a for e, ac, a in ((r[1], r[2], r[3][1]) for r in rows if r[0] == "account")
+        if e == "brightwater holdco" and ac == 3900)
+    expected_re_signed = round(-(opening_retained_earnings + net_income), 2)
+    assert re_signed == expected_re_signed, (
+        f"retained earnings {re_signed} does not roll forward from opening "
+        f"retained earnings {opening_retained_earnings} + H1 net income "
+        f"{net_income} (expected {expected_re_signed})")
+
+    consolidated_equity = round(abs(common_stock_total) + abs(re_signed), 2)
+    expected_consolidated_equity = round(DATA_ROOM_FY2025_CLOSING_EQUITY + net_income, 2)
+    assert consolidated_equity == expected_consolidated_equity, (
+        f"consolidated equity {consolidated_equity} is not continuous with "
+        f"the data room's FY2025 closing equity {DATA_ROOM_FY2025_CLOSING_EQUITY} "
+        f"+ H1 net income {net_income} (expected {expected_consolidated_equity})")
+
     wb = Workbook()
     ws = wb.active
     ws.title = "tb"
@@ -212,6 +250,12 @@ def main():
     print(f"gross AR {gross_ar:,.2f} vs allowance {allowance:,.2f}")
     print(f"fixed assets {fixed_assets:,.2f} vs accumulated depreciation {accum_dep:,.2f}")
     print(f"revenue {revenue:,.2f} vs total expenses {total_expenses:,.2f}")
+    print(f"H1 2026 net income {net_income:,.2f}")
+    print(f"opening retained earnings (2025-12-31, rolled forward) {opening_retained_earnings:,.2f}; "
+          f"closing retained earnings (this TB) {re_signed:,.2f}")
+    print(f"consolidated equity {consolidated_equity:,.2f} == data room FY2025 closing equity "
+          f"{DATA_ROOM_FY2025_CLOSING_EQUITY:,.2f} + H1 net income {net_income:,.2f} "
+          f"({expected_consolidated_equity:,.2f})")
 
 
 if __name__ == "__main__":
